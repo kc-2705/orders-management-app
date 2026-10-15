@@ -1,0 +1,679 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* centers vertically */
+  z-index: 1000;
+}
+
+/* Common modal content styles for both modals */
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px 30px;
+  width: 500px;      /* fixed width */
+  height: 400px;     /* fixed height */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  overflow-y: auto;  /* scroll if content overflows */
+  position: relative;
+}
+
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* History list */
+.history-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 15px;
+  /* Add these to center the list items */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontally center list items */
+  justify-content: center; /* vertically center if container height is set */
+  text-align: center; /* center text inside list items */
+}
+
+.history-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Actions menu additions */
+.actions-menu button.history {
+  background-color: #6c757d;
+  color: white;
+}
+
+.actions-menu button.history:hover {
+  background-color: #5a6268;
+}
+
+/* Small fixes for action buttons container */
+.actions-cell {
+  position: relative;
+}
+
+.actions-menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  z-index: 200;
+}
+
+.actions-menu button {
+  border: none;
+  background: none;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.actions-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.order-details-modal.modal-overlay {
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1100;
+}
+
+.view-modal {
+  /* No width or height override here or set same size */
+  width: 500px;
+  height: 400px;
+}
+
+.modal-content.view-modal {
+  max-width: 600px;
+  max-height: 70vh;
+  padding: 20px 25px;
+  overflow-y: auto;
+  position: relative;
+}
+
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+.order-summary p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.order-summary strong {
+  color: #555;
+}
+
+.order-list-page {
+  padding: 1.5rem;
+  margin-top: 60px;
+  overflow: visible !important;
+}
+
+.filters-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* side by side on wide screens */
+}
+
+.date-range-filter,
+.summary-panel {
+  background: #f5f7fa;
+  border-radius: 10px;
+  padding: 10px 10px; /* Reduced padding */
+  min-height: 140px; /* Reduced height */
+  flex: 1 1 280px;  /* flexible grow, shrink, base width */
+  min-width: 280px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  max-width: 500px; /* prevent overly large width on very large screens */
+}
+
+.date-range-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.range-btn,
+.status-btn {
+  margin: 5px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all  ease-in-out;
+  color: black;
+}
+
+.range-btn.active,
+.status-btn.active {
+  background-color: #007bff;
+  color: black;
+  border-color: #007bff;
+}
+
+.range-btn:hover,
+.status-btn:hover {
+  background-color: #007bff;
+  color: black;
+  border-color: #007bff;
+}
+
+.quick-range-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.date-input {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-input label {
+  font-weight: 600;
+  min-width: 45px;
+}
+
+.date-input input[type="date"] {
+  cursor: pointer;
+}
+
+.input-with-clear {
+  position: relative;
+}
+
+.input-with-clear input {
+  padding-right: 24px;
+}
+
+.input-with-clear.small input {
+  padding-right: 25px;
+  font-size: 0.9rem;
+  height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
+}
+
+.clear-icon:hover {
+  color: #333;
+}
+
+/* Summary panel styling */
+.summary-panel.interactive-summary {
+  background: #f9f9f9;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  color: #222;
+  flex-shrink: 0;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.summary-panel h4 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.3rem;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.status-row > div {
+  flex: 1;
+}
+
+.total-row {
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  color: #007bff;
+}
+
+.multi-status-filter {
+  margin-bottom: 1rem;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.orders-table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.orders-table tbody {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+.orders-table th{
+  cursor: pointer;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 6px 8px; /* reduce padding */
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+  vertical-align: middle;
+  white-space: nowrap; /* prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px; /* limit max width to keep things tight */
+}
+
+
+.nowrap-td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.action-cell {
+  position: relative;
+  overflow: visible;
+  z-index: 10;
+}
+
+
+.action-dots {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  user-select: none;
+}
+
+.action-item.delete {
+  color: red;
+}
+
+.sort-icon {
+  margin-left: 4px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.sort-icon.disabled {
+  color: #ccc;
+}
+
+.action-wrapper {
+  position: relative; /* keep relative for positioning */
+  display: inline-block;
+}
+
+.action-menu {
+  position: absolute;
+  top: 100%; /* below the dots */
+  left: 100%; /* align to the right side of the dots container */
+  margin-left: 8px; /* small space between dots and menu */
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  z-index: 9999;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.orders-table {
+  overflow: visible !important; /* ensure overflow visible so menu isn't clipped */
+}
+
+.action-cell {
+  position: relative; /* if not already set */
+  overflow: visible !important; /* allow visible overflow */
+}
+
+
+.action-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+
+.action-item:hover {
+  background-color: #f0f0f0;
+}
+
+.action-item.delete {
+  color: red;
+}
+
+.delete-confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.delete-confirm-modal .modal-content {
+  width: 320px;
+  padding: 1.5rem;
+}
+
+.checkbox-container {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.4rem 1rem;
+  border: 1.5px solid #666;
+  background-color: white;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color ease, border-color 0.2s ease;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+.btn:hover {
+  background-color: #f0f0f0;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.timeline {
+  position: relative;
+  padding: 20px 0;
+  list-style: none;
+  margin-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15px;
+  width: 2px;
+  height: 100%;
+  background: #dcdcdc;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 40px;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #2ecc71;
+  color: white;
+  font-size: 14px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  box-shadow: 0 0 0 4px white;
+}
+
+.timeline-content {
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  transition: background-color ease;
+}
+
+.timeline-content:hover {
+  background-color: #f1f1f1;
+}
+
+.event {
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+/*######  Responsiveness   ###########*/
+
+@media (max-width: 900px) {
+  .orders-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  .orders-table {
+    min-width: 700px;
+  }
+
+  .date-range-filter,
+  .summary-panel {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 885px) {
+  .multi-status-filter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    -webkit-justify-content: center; 
+  }
+}
+
+
+@media (max-width: 800px) {
+  .filters-summary {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%; /* was 42% — changed to full width for mobile */
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .date-range-filter,
+  .summary-panel {
+    width: 100%;
+    max-width: 400px;
+    min-width: 250px;
+    margin: 0 auto;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .summary-panel h4 {
+    font-size: 1.1rem;
+  }
+
+  .status-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .range-btn,
+  .status-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .orders-table{
+    margin-left: 150px;
+  }
+}
+
+.status-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .status-buttons {
+    grid-template-columns: repeat(2, 1fr); /* 2 buttons per row */
+    justify-items: center;
+  }
+  .orders-table{
+    margin-left: 400px;
+  }
+}
+
+
+/* Extra small screens < 500px (optional but useful) */
+@media (max-width: 400px) {
+
+  .status-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .date-range-filter,
+  .summary-panel {
+    align-items: center;
+    
+  }
+
+  .range-btn,
+  .status-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+
+  .date-range-filter label {
+    font-size: 13px;
+  }
+
+  .summary-panel h4 {
+    font-size: 1rem;
+  }
+}
+
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.empty-row {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #6b7280;
+}
+
+@media (max-width: 600px) {
+  .order-list-page {
+    padding: 1rem 0.75rem;
+  }
+
+  .summary-panel,
+  .summary-panel.interactive-summary {
+    min-width: 0;
+  }
+}

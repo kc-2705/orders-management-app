@@ -1,0 +1,257 @@
+/* Base container styling */
+.home-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to right, #e6f0ff, #f0f8ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page heading */
+.home-header {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 60px;
+}
+
+.home-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #1e3a8a;
+}
+
+.home-header p {
+  margin: 0.25rem 0 0;
+  color: #4b5563;
+}
+
+/* Card Grid Layout */
+.cards {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  transition: filter 0.3s ease;
+  z-index: 1;
+}
+
+.cards.blur-bg {
+  filter: blur(6px);
+}
+
+/* Individual Card */
+.card {
+  background: linear-gradient(145deg, #1e90ff, #0077cc);
+  border-radius: 20px;
+  padding: 2rem;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+/* Modal background blur */
+.card-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 40, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal content box */
+.card-expanded {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: left;
+}
+
+.card-expanded h2 {
+  margin-top: 0;
+  color: #004080;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #0077cc;
+  padding-bottom: 0.5rem;
+}
+
+.card-details {
+  margin-top: 1.2rem;
+  color: #333;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Scrollbar style */
+.card-details::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-details::-webkit-scrollbar-thumb {
+  background: #0077cc;
+  border-radius: 10px;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.8rem;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ff4d4d;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* -------- RESPONSIVE CARD GRID -------- */
+@media (max-width: 1130px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+  }
+
+  .card p {
+    font-size: 2rem;
+  }
+}
+
+/* Small screen: 1 per row */
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+        margin-top: 40px;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .card p {
+    font-size: 1.6rem;
+  }
+}
+
+/* -------- MODAL WINDOW ADJUSTMENTS -------- */
+
+@media (max-width: 809px) {
+  .card-expanded {
+    width: 90vw;
+    max-width: 90vw;
+    max-height: 80vh;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin-top: 4rem; 
+    margin-left: 100px;
+    margin-right: 10px;
+  }
+
+  .card-expanded h2 {
+    font-size: 1.5rem;
+  }
+
+  .card-details {
+    font-size: 0.95rem;
+  }
+
+  .close-btn {
+    font-size: 1.6rem;
+    top: 10px;
+    right: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-expanded {
+    margin-top: 1px;
+    padding: 10px;
+    margin-bottom: 90px;
+    margin-right: 10px;
+  }
+
+  .card-expanded h2 {
+    font-size: 1.3rem;
+  }
+
+  .card-details {
+    font-size: 0.85rem;
+  }
+
+  .close-btn {
+    font-size: 1.4rem;
+    top: 8px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-container {
+    padding: 1rem 0.75rem;
+  }
+}

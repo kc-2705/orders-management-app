@@ -1,0 +1,142 @@
+/* LoginRegister.css */
+
+:root {
+  --blue-primary: #1e40af;       /* Dark blue */
+  --blue-light: #3b82f6;         /* Bright blue */
+  --blue-muted: #93c5fd;         /* Light blue */
+  --gray-light: #f3f4f6;
+  --gray-dark: #374151;
+  --error-red: #ef4444;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+}
+
+.auth-container {
+  background: white;
+  border-radius: 10px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 10vh auto;
+}
+
+.auth-container h2 {
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--blue-primary);
+  user-select: none;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.auth-input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--blue-muted);
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+  outline-offset: 2px;
+  outline-color: transparent;
+  user-select: text;
+}
+
+.auth-input:focus {
+  border-color: var(--blue-light);
+  outline-color: var(--blue-light);
+}
+
+select.auth-input {
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="%231e40af" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--blue-primary);
+  color: white;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  user-select: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--blue-light);
+  outline: none;
+}
+
+.error-msg {
+  color: var(--error-red);
+  font-size: 0.875rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.auth-links {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--blue-primary);
+  user-select: none;
+}
+
+.auth-links a {
+  color: var(--blue-primary);
+  text-decoration: none;
+  margin: 0 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.auth-links a:hover,
+.auth-links a:focus {
+  text-decoration: underline;
+  color: var(--blue-light);
+  outline: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 440px) {
+  .auth-container {
+    padding: 2rem 1.5rem;
+    width: 90%;
+  }
+}
+
+.demo-btn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: var(--blue-primary);
+  border: 2px dashed var(--blue-muted);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.demo-btn:hover {
+  border-color: var(--blue-light);
+  background: #eff6ff;
+}
