@@ -7,6 +7,8 @@
 
 A React dashboard for creating, tracking and reviewing customer orders. Built as a front-end assessment and later cleaned up and moved to Vite.
 
+**Live demo:** https://kc-2705.github.io/orders-management-app/ (click **Use demo account**)
+
 ![Dashboard](docs/dashboard.png)
 
 ## Features
